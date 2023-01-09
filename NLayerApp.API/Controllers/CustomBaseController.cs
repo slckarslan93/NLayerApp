@@ -4,6 +4,8 @@ using NLayerApp.Core.DTOs;
 
 namespace NLayerApp.API.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class CustomBaseController : ControllerBase
     {
         [NonAction]
