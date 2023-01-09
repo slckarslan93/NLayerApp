@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using NLayerApp.Core.DTOs;
 using NLayerApp.Core.Model;
 using NLayerApp.Core.Services;
+using NLayerApp.Service.Services;
 
 namespace NLayerApp.API.Controllers
 {
@@ -13,11 +14,19 @@ namespace NLayerApp.API.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IService<Product> _service;
+        private readonly IProductService _productService;
 
-        public ProductsController(IMapper mapper, IService<Product> service)
+        public ProductsController(IMapper mapper, IService<Product> service, IProductService productservice)
         {
             _mapper = mapper;
             _service = service;
+            _productService = productservice;
+        }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetProductsWithCategory()
+        {
+            return CreateActionResult(await _productService.GetProductsWithCategory());
         }
 
         [HttpGet]
