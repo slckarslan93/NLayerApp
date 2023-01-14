@@ -14,7 +14,7 @@ namespace NLayerApp.API.Controllers
         private readonly IMapper _mapper;
         private readonly IProductService _service;
 
-        public ProductsController(IMapper mapper, IService<Product> service, IProductService productservice)
+        public ProductsController(IMapper mapper, IProductService productservice)
         {
             _mapper = mapper;
             _service = productservice;
