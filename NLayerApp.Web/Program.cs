@@ -1,7 +1,28 @@
+using Autofac.Extensions.DependencyInjection;
+using Autofac;
+using NLayerApp.Web.Modules;
+using Microsoft.EntityFrameworkCore;
+using NLayerApp.Repository;
+using System.Reflection;
+using NLayerApp.Service.Mapping;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddAutoMapper(typeof(MapProfile));
+
+builder.Services.AddDbContext<AppDbContext>(x =>
+{
+    x.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection"), options =>
+    {
+        options.MigrationsAssembly(Assembly.GetAssembly(typeof(AppDbContext)).GetName().Name);
+    });
+});
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new RepoServiceModule()));
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
