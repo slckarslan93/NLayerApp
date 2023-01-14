@@ -5,16 +5,16 @@ namespace NLayerApp.Web.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly IProductService _productService;
+        private readonly IProductService _services;
 
         public ProductsController(IProductService productService)
         {
-            _productService = productService;
+            _services = productService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var customResponse = await _productService.GetProductsWithCategory();
+            var customResponse = await _services.GetProductsWithCategory();
             return View(customResponse);
         }
     }
