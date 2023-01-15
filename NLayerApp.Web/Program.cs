@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using NLayerApp.Repository;
 using NLayerApp.Service.Mapping;
 using NLayerApp.Service.Validations;
+using NLayerApp.Web;
 using NLayerApp.Web.Modules;
 using System.Reflection;
 
@@ -22,16 +23,18 @@ builder.Services.AddDbContext<AppDbContext>(x =>
         options.MigrationsAssembly(Assembly.GetAssembly(typeof(AppDbContext)).GetName().Name);
     });
 });
+
+builder.Services.AddScoped(typeof(NotFoundFilter<>));
+
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new RepoServiceModule()));
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
-
+app.UseExceptionHandler("/Home/Error");
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
