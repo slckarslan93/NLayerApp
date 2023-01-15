@@ -1,0 +1,5 @@
+https://localhost:7160/ Apý
+http://localhost:5033/ Apý
+
+https://localhost:7289/ MVC
+https://localhost:7289/ MVC
