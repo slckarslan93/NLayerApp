@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NLayerApp.API.Filters;
 using NLayerApp.Core.DTOs;
 using NLayerApp.Core.Model;
 using NLayerApp.Core.Services;
-using NLayerApp.Service.Services;
 
 namespace NLayerApp.API.Controllers
 {

@@ -26,7 +26,7 @@ namespace NLayerApp.Web.Services
             return responseBoody.Data;
         }
 
-        public async Task<bool> Update(ProductDto newProduct)
+        public async Task<bool> UpdateAsync(ProductDto newProduct)
         {
             var response = await _httpClient.PutAsJsonAsync("products", newProduct);
 
