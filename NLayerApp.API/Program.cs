@@ -6,14 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using NLayerApp.API.Filters;
 using NLayerApp.API.Middlewares;
 using NLayerApp.API.Modules;
-using NLayerApp.Core.Repositories;
-using NLayerApp.Core.Services;
-using NLayerApp.Core.UnitOfWorks;
 using NLayerApp.Repository;
-using NLayerApp.Repository.Repositories;
-using NLayerApp.Repository.UnitOfWorks;
 using NLayerApp.Service.Mapping;
-using NLayerApp.Service.Services;
 using NLayerApp.Service.Validations;
 using System.Reflection;
 
