@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NLayerApp.Core.Model;
 using System.Reflection;
-using System.Threading;
 
 namespace NLayerApp.Repository
 {
